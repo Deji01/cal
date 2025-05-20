@@ -1,7 +1,7 @@
 import { 
   findAvailableSlots, 
   findWideOpenRanges
-} from '../../src/services/slotGenerator';
+} from '../../services/slotGenerator.js';
 
 describe('Slot Generator', () => {
   describe('findAvailableSlots', () => {

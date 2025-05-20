@@ -1,7 +1,7 @@
 import { 
   formatAvailableSlotsResponse,
   formatRangesForDisplay
-} from '../../src/services/formatters';
+} from '../../services/formatters.js';
 
 describe('Formatters', () => {
   describe('formatAvailableSlotsResponse', () => {

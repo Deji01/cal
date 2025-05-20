@@ -1,7 +1,7 @@
 import { 
   checkSlotAvailability,
   getAvailableSlots
-} from '../../src/services/calendarService';
+} from '../../services/integration/calendarService.js';
 
 // Mock the Google Calendar API client
 jest.mock('googleapis', () => {

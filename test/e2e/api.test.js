@@ -1,8 +1,8 @@
-const request = require('supertest');
-const app = require('../../src/app');
+import request from 'supertest';
+import app from '../../app.js';
 
 // Mock the calendar service
-jest.mock('../../src/services/calendarService', () => {
+jest.mock('../../services/integration/calendarService.js', () => {
   return {
     checkSlotAvailability: jest.fn().mockImplementation((startTime, endTime) => {
       if (startTime === '2025-05-21T19:00:00Z' && endTime === '2025-05-21T20:00:00Z') {

@@ -1,4 +1,4 @@
-import { parseDateTime, generateTimeSlots, formatDateTime } from '../../src/services/timeUtils';
+import { parseDateTime, generateTimeSlots, formatDateTime } from '../../services/timeUtils.js';
 
 describe('Time Utilities', () => {
   describe('parseDateTime', () => {
