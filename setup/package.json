@@ -1,0 +1,17 @@
+{
+  "name": "cal-com",
+  "version": "1.0.0",
+  "description": "converting google calendar to cal.com",
+  "keywords": [
+    "calendar",
+    "google",
+    "cal.com"
+  ],
+  "license": "MIT",
+  "author": "Ayodeji Yekeen",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  }
+}
