@@ -1,5 +1,5 @@
-const { formatDateTime } = require('./timeUtils');
-const config = require('../config');
+import { formatDateTime } from './timeUtils';
+import config from '../config';
 
 /**
  * Format available slots and ranges by date

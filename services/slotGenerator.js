@@ -1,4 +1,4 @@
-const { generateTimeSlots } = require('./timeUtils');
+import { generateTimeSlots } from './timeUtils';
 
 /**
  * Find available time slots between meetings during a workday

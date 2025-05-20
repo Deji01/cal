@@ -1,8 +1,8 @@
-const { google } = require('googleapis');
-const config = require('../../config');
-const { parseDateTime } = require('../timeUtils');
-const { findAvailableSlots, findWideOpenRanges } = require('../slotGenerator');
-const { formatAvailableSlotsResponse, formatRangesForDisplay } = require('../formatters');
+import { google } from 'googleapis';
+import config from '../../config';
+import { parseDateTime } from '../timeUtils';
+import { findAvailableSlots, findWideOpenRanges } from '../slotGenerator';
+import { formatAvailableSlotsResponse, formatRangesForDisplay } from '../formatters';
 
 // Initialize Google Calendar API client
 const auth = new google.auth.GoogleAuth({

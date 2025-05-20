@@ -1,4 +1,4 @@
-const { checkSlotAvailability, getAvailableSlots } = require('../services/calendarService');
+import { checkSlotAvailability, getAvailableSlots } from '../services/calendarService';
 
 /**
  * Handle the getSlots request

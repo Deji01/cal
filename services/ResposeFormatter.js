@@ -13,4 +13,4 @@ class ResponseFormatter {
   }
 }
 
-module.exports = ResponseFormatter;
+export default ResponseFormatter;
