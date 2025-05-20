@@ -1,4 +1,4 @@
-import { generateTimeSlots } from './timeUtils';
+import { generateTimeSlots } from './timeUtils.js';
 
 /**
  * Find available time slots between meetings during a workday
@@ -111,7 +111,4 @@ function findWideOpenRanges(slots, slotDurationMinutes, minimumConsecutiveSlots 
   return ranges;
 }
 
-module.exports = {
-  findAvailableSlots,
-  findWideOpenRanges
-};
+export { findAvailableSlots, findWideOpenRanges };

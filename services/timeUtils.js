@@ -1,5 +1,3 @@
-import config from '../config';
-
 class TimeUtils {
   /**
    * Parse a datetime string into a Date object
@@ -52,4 +50,9 @@ class TimeUtils {
   }
 }
 
-module.exports = TimeUtils;
+// Add these standalone function exports
+const parseDateTime = TimeUtils.parseDateTime;
+const generateTimeSlots = TimeUtils.generateTimeSlots;
+const formatDateTime = TimeUtils.formatDateTime;
+
+export { TimeUtils, parseDateTime, generateTimeSlots, formatDateTime };

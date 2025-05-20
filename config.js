@@ -1,5 +1,4 @@
-// src/config.js
-module.exports = {
+const config = {
     calendar: {
       workdayStart: "09:00:00",
       workdayEnd: "18:00:00",
@@ -11,3 +10,5 @@ module.exports = {
       port: process.env.PORT || 3000
     }
   };
+
+export default config;

@@ -1,4 +1,4 @@
-import { checkSlotAvailability, getAvailableSlots } from '../services/calendarService';
+import { checkSlotAvailability, getAvailableSlots } from '../integration/calendarService.js';
 
 /**
  * Handle the getSlots request
@@ -51,6 +51,6 @@ async function handleGetSlots(req, res) {
   }
 }
 
-module.exports = {
+export {
   handleGetSlots
 };

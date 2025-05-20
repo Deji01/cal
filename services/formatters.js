@@ -1,6 +1,5 @@
-import { formatDateTime } from './timeUtils';
-import config from '../config';
-
+import { formatDateTime } from './timeUtils.js';
+import config from '../config.js';
 /**
  * Format available slots and ranges by date
  * @param {Date[]} slots - Available time slots
@@ -71,7 +70,4 @@ function formatRangesForDisplay(formattedData) {
     .join('\n\n');
 }
 
-module.exports = {
-  formatAvailableSlotsResponse,
-  formatRangesForDisplay
-};
+export { formatAvailableSlotsResponse, formatRangesForDisplay };

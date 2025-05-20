@@ -1,8 +1,8 @@
 import { google } from 'googleapis';
-import config from '../../config';
-import { parseDateTime } from '../timeUtils';
-import { findAvailableSlots, findWideOpenRanges } from '../slotGenerator';
-import { formatAvailableSlotsResponse, formatRangesForDisplay } from '../formatters';
+import config from '../../config.js';
+import { parseDateTime } from '../timeUtils.js';
+import { findAvailableSlots, findWideOpenRanges } from '../slotGenerator.js';
+import { formatAvailableSlotsResponse, formatRangesForDisplay } from '../formatters.js';
 
 // Initialize Google Calendar API client
 const auth = new google.auth.GoogleAuth({
@@ -147,7 +147,4 @@ async function getAvailableSlots(startDate, endDate, calendarId = 'primary') {
   }
 }
 
-module.exports = {
-  checkSlotAvailability,
-  getAvailableSlots
-};
+export { checkSlotAvailability, getAvailableSlots };

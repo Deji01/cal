@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { handleGetSlots } from './controllers/availabilityController';
-import config from './config';
+import { handleGetSlots } from './services/controllers/availabilityController.js';
+import config from './config.js';
 
 const app = express();
 
@@ -19,10 +19,13 @@ app.get('/health', (req, res) => {
 // Start the server
 const PORT = config.api.port;
 
-if (require.main === module) {
+// Check if this file is being run directly
+const isMainModule = import.meta.url === `file://${process.argv[1]}`;
+
+if (isMainModule) {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
 }
 
-module.exports = app; // Export for testing
+export default app;
