@@ -130,7 +130,3 @@ const config = {
   }
 };
 ```
-
-## License
-
-[MIT](LICENSE) 
