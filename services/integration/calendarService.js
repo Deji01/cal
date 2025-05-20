@@ -146,5 +146,5 @@ async function getAvailableSlots(startDate, endDate, calendarId = 'primary') {
     throw error;
   }
 }
-
 export { checkSlotAvailability, getAvailableSlots };
+
