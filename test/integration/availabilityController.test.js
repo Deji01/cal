@@ -1,4 +1,5 @@
 import { handleGetSlots } from '../../services/controllers/availabilityController.js';
+import { jest } from '@jest/globals';
 
 // Mock the calendar service
 jest.mock('../../services/integration/calendarService.js', () => {

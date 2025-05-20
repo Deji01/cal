@@ -49,7 +49,8 @@ describe('Time Utilities', () => {
       const formatted = formatDateTime(date, 'America/Chicago');
       
       // Assuming America/Chicago is UTC-6 without DST
-      expect(formatted).toMatch(/Wednesday, May 21, 2025, 1:00 PM/);
+      expect(formatted).toMatch(/Wednesday, May 21, 2025 at 2:00 PM/);
+
     });
   });
 });

@@ -2,31 +2,34 @@ import {
   checkSlotAvailability,
   getAvailableSlots
 } from '../../services/integration/calendarService.js';
+import { jest } from '@jest/globals';
 
-// Mock the Google Calendar API client
 jest.mock('googleapis', () => {
   return {
     google: {
       auth: {
         GoogleAuth: jest.fn().mockImplementation(() => ({
-          getClient: jest.fn().mockResolvedValue({})
-        }))
+          getClient: jest.fn().mockResolvedValue({}),
+        })),
       },
       calendar: jest.fn().mockImplementation(() => ({
         events: {
           list: jest.fn().mockImplementation(async ({ timeMin, timeMax }) => {
             // Simple mock implementation that returns different results based on the query timeframe
-            if (timeMin === '2025-05-21T19:00:00Z' && timeMax === '2025-05-21T20:00:00Z') {
+            if (
+              timeMin === '2025-05-21T19:00:00Z' &&
+              timeMax === '2025-05-21T20:00:00Z'
+            ) {
               return {
                 data: {
                   items: [
                     {
                       summary: 'Existing Meeting',
                       start: { dateTime: '2025-05-21T19:00:00Z' },
-                      end: { dateTime: '2025-05-21T20:00:00Z' }
-                    }
-                  ]
-                }
+                      end: { dateTime: '2025-05-21T20:00:00Z' },
+                    },
+                  ],
+                },
               };
             } else {
               return {
@@ -35,23 +38,24 @@ jest.mock('googleapis', () => {
                     {
                       summary: 'Morning Meeting',
                       start: { dateTime: '2025-05-21T14:00:00Z' },
-                      end: { dateTime: '2025-05-21T15:00:00Z' }
+                      end: { dateTime: '2025-05-21T15:00:00Z' },
                     },
                     {
                       summary: 'Lunch',
                       start: { dateTime: '2025-05-21T17:00:00Z' },
-                      end: { dateTime: '2025-05-21T18:00:00Z' }
-                    }
-                  ]
-                }
+                      end: { dateTime: '2025-05-21T18:00:00Z' },
+                    },
+                  ],
+                },
               };
             }
-          })
-        }
-      }))
-    }
+          }),
+        },
+      })),
+    },
   };
 });
+
 
 describe('Calendar Service', () => {
   describe('checkSlotAvailability', () => {

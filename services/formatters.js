@@ -1,5 +1,5 @@
-import { formatDateTime } from './timeUtils.js';
-import config from '../config.js';
+import { formatDateTime } from "./timeUtils.js";
+import config from "../config.js";
 /**
  * Format available slots and ranges by date
  * @param {Date[]} slots - Available time slots
@@ -8,34 +8,42 @@ import config from '../config.js';
  */
 function formatAvailableSlotsResponse(slots, ranges) {
   const slotsByDate = {};
-  
+
   // Group slots by date
-  slots.forEach(slot => {
-    const dateKey = slot.toISOString().split('T')[0];
-    
+  slots.forEach((slot) => {
+    const dateKey = slot.toISOString().split("T")[0];
+
     if (!slotsByDate[dateKey]) {
       slotsByDate[dateKey] = {
-        date: formatDateTime(new Date(`${dateKey}T12:00:00Z`), config.calendar.timezone).split(',')[0] + ',' + 
-              formatDateTime(new Date(`${dateKey}T12:00:00Z`), config.calendar.timezone).split(',')[1],
+        date:
+          formatDateTime(
+            new Date(`${dateKey}T12:00:00Z`),
+            config.calendar.timezone
+          ).split(",")[0] +
+          "," +
+          formatDateTime(
+            new Date(`${dateKey}T12:00:00Z`),
+            config.calendar.timezone
+          ).split(",")[1],
         availableSlots: [],
-        wideOpenRanges: []
+        wideOpenRanges: [],
       };
     }
-    
+
     slotsByDate[dateKey].availableSlots.push(
-      formatDateTime(slot, config.calendar.timezone).split(', ').pop()
+      formatDateTime(slot, config.calendar.timezone).split(", ").pop()
     );
   });
-  
+
   // Add ranges to corresponding dates
-  ranges.forEach(range => {
-    const dateKey = range.start.toISOString().split('T')[0];
-    
+  ranges.forEach((range) => {
+    const dateKey = range.start.toISOString().split("T")[0];
+
     if (slotsByDate[dateKey]) {
       slotsByDate[dateKey].wideOpenRanges.push(range);
     }
   });
-  
+
   return slotsByDate;
 }
 
@@ -46,28 +54,38 @@ function formatAvailableSlotsResponse(slots, ranges) {
  */
 function formatRangesForDisplay(formattedData) {
   const timezone = config.calendar.timezone;
-  
+
   return Object.entries(formattedData)
     .map(([dateKey, data]) => {
       const { date, availableSlots, wideOpenRanges } = data;
-      
-      const slotsText = availableSlots
-        .map(time => `- ${time}`)
-        .join('\n');
-      
-      const rangesText = wideOpenRanges.length > 0
-        ? wideOpenRanges
-            .map(range => {
-              const startTime = formatDateTime(range.start, timezone).split(', ').pop();
-              const endTime = formatDateTime(range.end, timezone).split(', ').pop();
-              return `- ${startTime} to ${endTime}`;
-            })
-            .join('\n')
-        : 'None';
-      
+
+      const slotsText = availableSlots.map((time) => `- ${time}`).join("\n");
+
+      const rangesText =
+        wideOpenRanges.length > 0
+          ? wideOpenRanges
+              .map((range) => {
+                const startTime = range.start.toLocaleTimeString("en-US", {
+                  timeZone: timezone,
+                  hour: "numeric",
+                  minute: "2-digit",
+                  hour12: true,
+                });
+                const endTime = range.end.toLocaleTimeString("en-US", {
+                  timeZone: timezone,
+                  hour: "numeric",
+                  minute: "2-digit",
+                  hour12: true,
+                });
+
+                return `- ${startTime} to ${endTime}`;
+              })
+              .join("\n")
+          : "None";
+
       return `### ${date}\nAvailable Start Times:\n${slotsText}\n\nWide Open Ranges:\n${rangesText}`;
     })
-    .join('\n\n');
+    .join("\n\n");
 }
 
 export { formatAvailableSlotsResponse, formatRangesForDisplay };

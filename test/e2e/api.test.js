@@ -1,5 +1,6 @@
 import request from 'supertest';
 import app from '../../app.js';
+import { jest } from '@jest/globals';
 
 // Mock the calendar service
 jest.mock('../../services/integration/calendarService.js', () => {
